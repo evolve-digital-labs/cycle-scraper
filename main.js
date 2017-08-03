@@ -17,8 +17,7 @@ export default function main(sources) {
 
   const submit$ = sources.DOM
     .select('form.search')
-    .events('submit')
-    .take(1);
+    .events('submit');
 
   const dom$ = xs.combine(query$, count$).map(([query, count]) =>
 
@@ -46,6 +45,7 @@ export default function main(sources) {
       method: 'POST',
       send: {query}
     }))
+    .take(1);
 
   const sinks = {
     DOM: dom$,
