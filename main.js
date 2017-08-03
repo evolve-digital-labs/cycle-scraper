@@ -17,7 +17,8 @@ export default function main(sources) {
 
   const submit$ = sources.DOM
     .select('form.search')
-    .events('submit');
+    .events('submit')
+    .take(1);
 
   const dom$ = xs.combine(query$, count$).map(([query, count]) =>
 
